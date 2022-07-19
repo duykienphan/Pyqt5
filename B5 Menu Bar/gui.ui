@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -51,7 +51,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../Stacked Widget/eiffel.jpg</pixmap>
+       <pixmap>../B3 Stacked Widget/eiffel.jpg</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -75,7 +75,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../Stacked Widget/riviera.jpg</pixmap>
+       <pixmap>../B3 Stacked Widget/riviera.jpg</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -117,70 +117,10 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QPushButton" name="btn_tab1">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>350</y>
-      <width>100</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Tab 1</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_tab2">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>350</y>
-      <width>100</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Tab 2</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_tab3">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>350</y>
-      <width>100</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Tab 3</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btn_close">
     <property name="geometry">
      <rect>
-      <x>650</x>
+      <x>350</x>
       <y>350</y>
       <width>100</width>
       <height>60</height>
@@ -207,8 +147,44 @@
      <height>26</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuTab_control">
+    <property name="title">
+     <string>Tab control</string>
+    </property>
+    <addaction name="actionTab_1"/>
+    <addaction name="actionTab_2"/>
+    <addaction name="actionTab_3"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionNothing"/>
+   </widget>
+   <addaction name="menuTab_control"/>
+   <addaction name="menuTools"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionTab_1">
+   <property name="text">
+    <string>Tab 1</string>
+   </property>
+  </action>
+  <action name="actionTab_2">
+   <property name="text">
+    <string>Tab 2</string>
+   </property>
+  </action>
+  <action name="actionTab_3">
+   <property name="text">
+    <string>Tab 3</string>
+   </property>
+  </action>
+  <action name="actionNothing">
+   <property name="text">
+    <string>Nothing</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
