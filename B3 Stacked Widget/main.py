@@ -16,8 +16,8 @@ class MainWindow:
         self.uic.btn_close.clicked.connect(self.func_closeWindow)
 
         #Cấu hình lại đường dẫn cho ảnh, icon
-        self.uic.lbl_img1.setPixmap(QtGui.QPixmap(r"D:\Kien Phan\Python\Pyqt5\Stacked Widget\eiffel.jpg"))
-        self.uic.lbl_img2.setPixmap(QtGui.QPixmap(r"D:\Kien Phan\Python\Pyqt5\Stacked Widget\riviera.jpg"))
+        self.uic.lbl_img1.setPixmap(QtGui.QPixmap(r"D:\Kien Phan\Python\Pyqt5\B3 Stacked Widget\eiffel.jpg"))
+        self.uic.lbl_img2.setPixmap(QtGui.QPixmap(r"D:\Kien Phan\Python\Pyqt5\B3 Stacked Widget\riviera.jpg"))
 
     ##################### Các chức năng #############################
     def func_showPage1(self):
