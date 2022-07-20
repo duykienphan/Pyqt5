@@ -1,13 +1,4 @@
-"""
-Pakages:
-pip install pyqt5
-pip install pyqt-tools
-pip install pyqt5designer
-pip install PyQt5-stubs==5.15.2.0
-
-"""
-
-#Chuyển file .ui -> .py: pyuic5 -x ".ui path" -o new_name.py
+#This program has spacers (grid)
 
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -20,16 +11,18 @@ class MainWindow:
         self.uic.setupUi(self.main_win)
 
         #Cấu hình chức năng cho nút nhấn
-        self.uic.btn_start.clicked.connect(self.func_start)
-        self.uic.btn_stop.clicked.connect(self.func_stop)
+        self.uic.btn_onOff.clicked.connect(self.func_onOff)
+        
     
     ##################### Các chức năng #############################
-    def func_start(self):
-        #Đổi text của label chỉ định
-        self.uic.lbl_display.setText("Start button clicked!")
-    
-    def func_stop(self):
-        self.main_win.close()
+    def func_onOff(self):
+        temp = self.uic.lbl_text.text()
+        if (temp == '0'):
+            self.uic.btn_onOff.setText("On")
+            self.uic.lbl_text.setText("1")
+        else:
+            self.uic.btn_onOff.setText("Off")
+            self.uic.lbl_text.setText("0")
 
     #################################################################
 
