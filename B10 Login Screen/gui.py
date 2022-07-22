@@ -13,26 +13,38 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setWindowFlag(QtCore.Qt.FramelessWindowHint)
-        MainWindow.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(550, 450)
         MainWindow.setMaximumSize(QtCore.QSize(550, 450))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("password.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
+        MainWindow.setStyleSheet("background-color: rgb(255, 255, 255);")
         MainWindow.setTabShape(QtWidgets.QTabWidget.Rounded)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.lbl_image = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_image.setGeometry(QtCore.QRect(240, 20, 70, 70))
-        self.lbl_image.setText("")
-        self.lbl_image.setPixmap(QtGui.QPixmap("user.png"))
-        self.lbl_image.setScaledContents(True)
-        self.lbl_image.setAlignment(QtCore.Qt.AlignCenter)
-        self.lbl_image.setObjectName("lbl_image")
-        self.btn_login = QtWidgets.QPushButton(self.centralwidget)
+        self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
+        self.stackedWidget.setGeometry(QtCore.QRect(0, 0, 550, 450))
+        self.stackedWidget.setObjectName("stackedWidget")
+        self.page = QtWidgets.QWidget()
+        self.page.setObjectName("page")
+        self.lnEdit_pass = QtWidgets.QLineEdit(self.page)
+        self.lnEdit_pass.setGeometry(QtCore.QRect(125, 250, 300, 30))
+        font = QtGui.QFont()
+        font.setFamily("Verdana")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStrikeOut(False)
+        font.setKerning(True)
+        self.lnEdit_pass.setFont(font)
+        self.lnEdit_pass.setStyleSheet("border: none;\n"
+"border-bottom: 3px solid rgba(189, 195, 199, 255);\n"
+"background-color: qradialgradient(stop:1 rgba(255, 255, 255, 0));\n"
+"")
+        self.lnEdit_pass.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.lnEdit_pass.setObjectName("lnEdit_pass")
+        self.btn_login = QtWidgets.QPushButton(self.page)
         self.btn_login.setGeometry(QtCore.QRect(125, 320, 300, 40))
         font = QtGui.QFont()
         font.setFamily("Verdana")
@@ -57,20 +69,45 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.btn_login.setObjectName("btn_login")
-        self.lbl_login = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_login.setGeometry(QtCore.QRect(205, 110, 140, 50))
+        self.lbl_passIcon = QtWidgets.QLabel(self.page)
+        self.lbl_passIcon.setGeometry(QtCore.QRect(85, 250, 30, 30))
+        self.lbl_passIcon.setText("")
+        self.lbl_passIcon.setPixmap(QtGui.QPixmap("unlock.png"))
+        self.lbl_passIcon.setScaledContents(True)
+        self.lbl_passIcon.setObjectName("lbl_passIcon")
+        self.lbl_accIcon = QtWidgets.QLabel(self.page)
+        self.lbl_accIcon.setGeometry(QtCore.QRect(85, 190, 30, 30))
+        self.lbl_accIcon.setText("")
+        self.lbl_accIcon.setPixmap(QtGui.QPixmap("account.png"))
+        self.lbl_accIcon.setScaledContents(True)
+        self.lbl_accIcon.setObjectName("lbl_accIcon")
+        self.btn_exit = QtWidgets.QPushButton(self.page)
+        self.btn_exit.setGeometry(QtCore.QRect(125, 380, 300, 40))
         font = QtGui.QFont()
         font.setFamily("Verdana")
-        font.setPointSize(24)
+        font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
         font.setStrikeOut(False)
         font.setKerning(True)
-        self.lbl_login.setFont(font)
-        self.lbl_login.setStyleSheet("color: rgb(243, 156, 18);")
-        self.lbl_login.setAlignment(QtCore.Qt.AlignCenter)
-        self.lbl_login.setObjectName("lbl_login")
-        self.lnEdit_acc = QtWidgets.QLineEdit(self.centralwidget)
+        self.btn_exit.setFont(font)
+        self.btn_exit.setStyleSheet("QPushButton#btn_exit{\n"
+"    background-color: rgb(169,169,169);\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 1px solid rgba(169,169,169,255);\n"
+"    border-radius: 20px;\n"
+"}\n"
+"\n"
+"QPushButton#btn_exit:hover {\n"
+"    background-color: rgb(128,128,128);\n"
+"}\n"
+"\n"
+"QPushButton#btn_exit:pressed {\n"
+"\n"
+"}\n"
+"")
+        self.btn_exit.setObjectName("btn_exit")
+        self.lnEdit_acc = QtWidgets.QLineEdit(self.page)
         self.lnEdit_acc.setGeometry(QtCore.QRect(125, 190, 300, 30))
         font = QtGui.QFont()
         font.setFamily("Verdana")
@@ -86,94 +123,74 @@ class Ui_MainWindow(object):
 "\n"
 "")
         self.lnEdit_acc.setObjectName("lnEdit_acc")
-        self.lnEdit_pass = QtWidgets.QLineEdit(self.centralwidget)
-        self.lnEdit_pass.setGeometry(QtCore.QRect(125, 250, 300, 30))
+        self.lbl_image = QtWidgets.QLabel(self.page)
+        self.lbl_image.setGeometry(QtCore.QRect(240, 20, 70, 70))
+        self.lbl_image.setText("")
+        self.lbl_image.setPixmap(QtGui.QPixmap("user.png"))
+        self.lbl_image.setScaledContents(True)
+        self.lbl_image.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_image.setObjectName("lbl_image")
+        self.lbl_login = QtWidgets.QLabel(self.page)
+        self.lbl_login.setGeometry(QtCore.QRect(205, 110, 140, 50))
         font = QtGui.QFont()
         font.setFamily("Verdana")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setStrikeOut(False)
-        font.setKerning(True)
-        self.lnEdit_pass.setFont(font)
-        self.lnEdit_pass.setStyleSheet("border: none;\n"
-"border-bottom: 3px solid rgba(189, 195, 199, 255);\n"
-"background-color: qradialgradient(stop:1 rgba(255, 255, 255, 0));\n"
-"")
-        self.lnEdit_pass.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.lnEdit_pass.setObjectName("lnEdit_pass")
-        self.lbl_accIcon = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_accIcon.setGeometry(QtCore.QRect(85, 190, 30, 30))
-        self.lbl_accIcon.setText("")
-        self.lbl_accIcon.setPixmap(QtGui.QPixmap("account.png"))
-        self.lbl_accIcon.setScaledContents(True)
-        self.lbl_accIcon.setObjectName("lbl_accIcon")
-        self.lbl_passIcon = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_passIcon.setGeometry(QtCore.QRect(85, 250, 30, 30))
-        self.lbl_passIcon.setText("")
-        self.lbl_passIcon.setPixmap(QtGui.QPixmap("unlock.png"))
-        self.lbl_passIcon.setScaledContents(True)
-        self.lbl_passIcon.setObjectName("lbl_passIcon")
-        self.btn_exit = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_exit.setGeometry(QtCore.QRect(125, 380, 300, 40))
-        font = QtGui.QFont()
-        font.setFamily("Verdana")
-        font.setPointSize(11)
+        font.setPointSize(24)
         font.setBold(True)
         font.setWeight(75)
         font.setStrikeOut(False)
         font.setKerning(True)
-        self.btn_exit.setFont(font)
-        self.btn_exit.setStyleSheet("QPushButton#btn_exit{\n"
-"    background-color: rgb(169,169,169);\n"
+        self.lbl_login.setFont(font)
+        self.lbl_login.setStyleSheet("color: rgb(243, 156, 18);")
+        self.lbl_login.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_login.setObjectName("lbl_login")
+        self.stackedWidget.addWidget(self.page)
+        self.page_2 = QtWidgets.QWidget()
+        self.page_2.setObjectName("page_2")
+        self.lbl_welcome = QtWidgets.QLabel(self.page_2)
+        self.lbl_welcome.setGeometry(QtCore.QRect(175, 150, 200, 70))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_welcome.setFont(font)
+        self.lbl_welcome.setStyleSheet("QLabel#lbl_welcome {\n"
+"    color: rgb(255,165,0);\n"
+"}")
+        self.lbl_welcome.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_welcome.setObjectName("lbl_welcome")
+        self.btn_logOut = QtWidgets.QPushButton(self.page_2)
+        self.btn_logOut.setGeometry(QtCore.QRect(20, 410, 93, 28))
+        self.btn_logOut.setStyleSheet("QPushButton#btn_logOut{\n"
+"    background-color: rgb(255,165,0);\n"
 "    color: rgb(255, 255, 255);\n"
-"    border: 1px solid rgba(169,169,169);\n"
-"    border-radius: 20px;\n"
+"    border-radius: 5px;\n"
 "}\n"
 "\n"
-"QPushButton#btn_exit:hover {\n"
-"    background-color: rgb(128,128,128);\n"
+"QPushButton#btn_logOut:hover {\n"
+"    background-color: rgb(255, 140, 0);\n"
 "}\n"
 "\n"
-"QPushButton#btn_exit:pressed {\n"
+"QPushButton#btn_logOut:pressed {\n"
 "\n"
-"}\n"
-"")
-        self.btn_exit.setObjectName("btn_exit")
-        self.lbl_background = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_background.setGeometry(QtCore.QRect(10, 10, 530, 430))
-        self.lbl_background.setStyleSheet("QLabel#lbl_background{\n"
-"    background-color: rgba(105,105,105,200);\n"
-"    border-radius: 20%;\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.lbl_background.setText("")
-        self.lbl_background.setScaledContents(True)
-        self.lbl_background.setObjectName("lbl_background")
-        self.lbl_background.raise_()
-        self.lbl_image.raise_()
-        self.btn_login.raise_()
-        self.lbl_login.raise_()
-        self.lnEdit_acc.raise_()
-        self.lnEdit_pass.raise_()
-        self.lbl_accIcon.raise_()
-        self.lbl_passIcon.raise_()
-        self.btn_exit.raise_()
+"}")
+        self.btn_logOut.setObjectName("btn_logOut")
+        self.stackedWidget.addWidget(self.page_2)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Login Screen"))
-        self.btn_login.setText(_translate("MainWindow", "Login"))
-        self.lbl_login.setText(_translate("MainWindow", "Login"))
-        self.lnEdit_acc.setPlaceholderText(_translate("MainWindow", "User name"))
         self.lnEdit_pass.setPlaceholderText(_translate("MainWindow", "Password"))
-        self.btn_exit.setText(_translate("MainWindow", "Exit"))
+        self.btn_login.setText(_translate("MainWindow", "Login"))
+        self.btn_exit.setText(_translate("MainWindow", "Cancel"))
+        self.lnEdit_acc.setPlaceholderText(_translate("MainWindow", "User name"))
+        self.lbl_login.setText(_translate("MainWindow", "Login"))
+        self.lbl_welcome.setText(_translate("MainWindow", "Welcome!"))
+        self.btn_logOut.setText(_translate("MainWindow", "Log out"))
 
 
 if __name__ == "__main__":

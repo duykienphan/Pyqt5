@@ -1,6 +1,6 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 from gui import Ui_MainWindow
 
 class MainWindow:
@@ -12,6 +12,8 @@ class MainWindow:
         #Cấu hình chức năng cho nút nhấn
         self.uic.btn_exit.clicked.connect(self.func_close)
         self.uic.btn_login.clicked.connect(self.func_login)
+        self.uic.btn_logOut.clicked.connect(self.func_logOut)
+
         
         #Cấu hình lại đường dẫn cho ảnh, icon
         self.uic.lbl_passIcon.setPixmap(QtGui.QPixmap(r"B10 Login Screen\unlock.png"))
@@ -23,7 +25,26 @@ class MainWindow:
         self.main_win.close()
     
     def func_login(self):
-        pass
+        acc = self.uic.lnEdit_acc.text()
+        password = self.uic.lnEdit_pass.text()
+        if (acc == "kienphan30103") and (password == "123456"):
+            self.uic.stackedWidget.setCurrentWidget(self.uic.page_2)
+        else:
+            self.showdialog()
+            
+    def showdialog(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+
+        msg.setText("Username or Password is incorrect!")
+        msg.setWindowTitle("Error!")
+        msg.setStandardButtons(QMessageBox.Ok)
+            
+        retval = msg.exec_()
+        print("value of pressed message box button:", retval)
+
+    def func_logOut(self):
+        self.uic.stackedWidget.setCurrentWidget(self.uic.page)
 
     #################################################################
 
