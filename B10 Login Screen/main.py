@@ -10,6 +10,10 @@ class MainWindow:
         self.uic.setupUi(self.main_win)
 
         #Cấu hình chức năng cho nút nhấn
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("B10 Login Screen\password.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.main_win.setWindowIcon(icon)
+
         self.uic.btn_exit.clicked.connect(self.func_close)
         self.uic.btn_login.clicked.connect(self.func_login)
         self.uic.btn_logOut.clicked.connect(self.func_logOut)
@@ -35,13 +39,10 @@ class MainWindow:
     def showdialog(self):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
-
         msg.setText("Username or Password is incorrect!")
         msg.setWindowTitle("Error!")
         msg.setStandardButtons(QMessageBox.Ok)
-            
         retval = msg.exec_()
-        print("value of pressed message box button:", retval)
 
     def func_logOut(self):
         self.uic.stackedWidget.setCurrentWidget(self.uic.page)
