@@ -15,8 +15,6 @@ class MainWindow(QMainWindow):
         self.uic = Ui_MainWindow()
         self.uic.setupUi(self)
 
-        self.thread = {}
-
         #Cấu hình cho nút bấm
         self.uic.btn_start1.clicked.connect(self.func_start1)
         self.uic.btn_start2.clicked.connect(self.func_start2)
