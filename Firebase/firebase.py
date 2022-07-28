@@ -31,3 +31,6 @@ class Firebase:
 
     def update_led(self, value):
         self.db.child("control").update({"led": value})
+
+    def update_noti(self, text):
+        self.db.child("notification").update({"text": text})

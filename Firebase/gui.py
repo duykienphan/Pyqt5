@@ -14,7 +14,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(440, 175)
+        MainWindow.resize(452, 193)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(r"Firebase\img\firebase-icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -22,8 +25,8 @@ class Ui_MainWindow(object):
         self.widget_5 = QtWidgets.QWidget(self.centralwidget)
         self.widget_5.setObjectName("widget_5")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.widget_5)
-        self.horizontalLayout_3.setContentsMargins(5, 5, 5, 5)
-        self.horizontalLayout_3.setSpacing(5)
+        self.horizontalLayout_3.setContentsMargins(5, 5, 5, 0)
+        self.horizontalLayout_3.setSpacing(6)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.widget_3 = QtWidgets.QWidget(self.widget_5)
         self.widget_3.setStyleSheet("QWidget#widget_3{\n"
@@ -101,6 +104,38 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.btn_led)
         self.horizontalLayout_3.addWidget(self.widget_4)
         self.gridLayout.addWidget(self.widget_5, 0, 0, 1, 1)
+        self.widget_7 = QtWidgets.QWidget(self.centralwidget)
+        self.widget_7.setObjectName("widget_7")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.widget_7)
+        self.verticalLayout_4.setContentsMargins(5, 0, 5, 5)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.widget_6 = QtWidgets.QWidget(self.widget_7)
+        self.widget_6.setStyleSheet("QWidget#widget_6{\n"
+"    border: 1px solid;\n"
+"}")
+        self.widget_6.setObjectName("widget_6")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.widget_6)
+        self.horizontalLayout_4.setContentsMargins(5, 5, 5, 5)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.lbl_notiDisplay = QtWidgets.QLabel(self.widget_6)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_notiDisplay.setFont(font)
+        self.lbl_notiDisplay.setObjectName("lbl_notiDisplay")
+        self.horizontalLayout_4.addWidget(self.lbl_notiDisplay)
+        self.lineEdit_noti = QtWidgets.QLineEdit(self.widget_6)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.lineEdit_noti.setFont(font)
+        self.lineEdit_noti.setObjectName("lineEdit_noti")
+        self.horizontalLayout_4.addWidget(self.lineEdit_noti)
+        self.btn_update = QtWidgets.QPushButton(self.widget_6)
+        self.btn_update.setObjectName("btn_update")
+        self.horizontalLayout_4.addWidget(self.btn_update)
+        self.verticalLayout_4.addWidget(self.widget_6)
+        self.gridLayout.addWidget(self.widget_7, 1, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -108,13 +143,16 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Firebase database"))
         self.lbl_temperatureDisplay.setText(_translate("MainWindow", "Nhiệt độ:"))
         self.lbl_temperatureValue.setText(_translate("MainWindow", "None *C"))
         self.lbl_humidityDisplay.setText(_translate("MainWindow", "Độ ẩm:"))
         self.lbl_humidityValue.setText(_translate("MainWindow", "None %"))
         self.lbl_ledDisplay.setText(_translate("MainWindow", "Led Control"))
         self.btn_led.setText(_translate("MainWindow", "ON"))
+        self.lbl_notiDisplay.setText(_translate("MainWindow", "Thông báo:"))
+        self.lineEdit_noti.setPlaceholderText(_translate("MainWindow", "Nhập nội dung"))
+        self.btn_update.setText(_translate("MainWindow", "Update"))
 
 
 if __name__ == "__main__":
