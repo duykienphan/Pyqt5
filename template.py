@@ -9,7 +9,7 @@ class MainWindow:
         self.main_win = QMainWindow()
         self.uic = Ui_MainWindow()
         self.uic.setupUi(self.main_win)
-
+        # new line
         #Cấu hình chức năng cho nút nhấn
         self.uic.btn_start.clicked.connect(self.func_start)
         self.uic.btn_stop.clicked.connect(self.func_stop)
